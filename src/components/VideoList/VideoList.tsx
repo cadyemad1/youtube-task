@@ -1,12 +1,14 @@
 import React from "react";
 
 import VideoItem from '../VideoItem/VideoItem';
+import {VideoItemProps,VideoListProps} from '../../Types'
+
 import './VideoList.scss';
 
-const VideoList = ({items}:any) =>{
+const VideoList = ({items}:VideoListProps) =>{
     return(
         <div className="videos-container">
-            {items?.map((item:any)=><VideoItem item={item} key={item.id.videoId}/>)} 
+            {items?.map((item:VideoItemProps)=><VideoItem item={item} key={item.id.videoId}/>)} 
        </div>
     ) 
 }

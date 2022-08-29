@@ -4,8 +4,9 @@ import './Header.scss';
 
 import Search from "../SearchBar/SearchBar";
 import Logo from "../Logo/Logo";
+import {SearchProps} from '../../Types'
 
-const Header = ({onSearch}:any) =>{
+const Header = ({onSearch}:SearchProps) =>{
 
     return (
         <div className="header">

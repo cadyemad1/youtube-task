@@ -1,9 +1,10 @@
 import React from "react";
 
 import './VideoItem.scss';
+import {ItemProps} from '../../Types'
 
-const VideoItem = ({item}:any) =>{
-    console.log("item-->",item)
+const VideoItem = ({item}:ItemProps) =>{
+    
     const {snippet:{thumbnails,title,channelTitle}} = item;
     return(
         <div className="video-item">
