@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     height: 50px;
+    padding: 0 20 0 20;
+    @media screen and (max-width:768px) {
+        background-color: red;
+    }
+}

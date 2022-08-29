@@ -1,0 +1,17 @@
+.thumbnail{
+    width: 10em;
+}
+
+.video-item{
+    margin-top: 20px;
+    display: grid;
+    gap: 7px;
+    grid-template-columns: auto auto;
+    align-items: flex-start;
+    width: 95%;
+}
+
+.title{
+    margin:0px;
+    font-size: 15px;
+}
