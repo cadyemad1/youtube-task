@@ -1,7 +1,60 @@
+@mixin animate($animation,$duration,$method,$times){
+    animation: $animation $duration $method $times;
+}
+@mixin keyframes($name){
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
 .loader{
-    position: absolute;
-    top: 25%;
-    left: 44%;
-    display: flex;
-    flex-direction: column;
+    @media screen and (min-width:768px) {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+     }
+   
+    @media screen and (max-width:768px) {
+        position: absolute;
+        top: 25%;
+        left: 44%;
+        display: flex;
+        flex-direction: column;
+     }
+   
+}
+
+.sm-show{
+    @media screen and (min-width:768px) {
+       display: none;
+    }
+}
+.loading-bar-container{
+    background: lightgray;
+    height: 100vw;;
+    width:5px;
+}
+.loading-bar{
+    height: 100vw;;
+    width:5px;
+    background: red;
+    @include keyframes(load){
+        from{
+            height: 25vw;
+            }
+          to{
+            height: 100vw;
+            }
+          
+          }
+      
+    @include animate(load, 5s, linear, 3);
+  
+    
+}
+.lg-show-loader{
+    @media screen and (max-width:768px) {
+        display: none;
+     }
+    transform: rotate(450deg);
 }

@@ -27,11 +27,19 @@ const handleKeyPress = (e:React.KeyboardEvent<HTMLInputElement>) =>{
    setIsInputChanged(!isInputChanged);
    onSearch(searchValue,prevSearchValue,setprevSearchValue);
 }
+
+const renderInput = () =><input type='search' value={searchValue} onChange={handleSearchValue} onKeyDown={(e)=>handleKeyPress(e)}/>
+
     return(
         <div className="search-bar">
+            <div className="sm-show">
         {isInputChanged
         ?<h4 className="search-text">{searchValue}</h4> 
-        :<input type='search' value={searchValue} onChange={handleSearchValue} onKeyDown={(e)=>handleKeyPress(e)}/>}
+        :renderInput()}
+            </div>
+            <div className="lg-show">
+            {renderInput()}
+            </div>
         <button className="search-btn" onClick={handleClick}>
         <FontAwesomeIcon className="search-icon" icon={faMagnifyingGlass}/>
         </button>

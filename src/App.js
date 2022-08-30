@@ -1,13 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import Loader from './components/Loader/Loader';
 import Header from './components/Header/Header';
 import VideoList from './components/VideoList/VideoList';
 import { search } from './utils/search';
+import SecondHeader from './components/SecondHeader/SecondHeader';
+import Context from './context';
 
 function App() {
   const [videos, setVideos] = useState();
+  const [totalResults, setTotalResult] = useState();
   const [isLoading, setIsLoading] = useState();
   const [limit, setLimit] = useState(10);
 
@@ -25,6 +28,7 @@ function App() {
       try {
         const response = await search('spongebob', limit);
         setVideos(response.data.items);
+        setTotalResult(response.data.pageInfo.totalResults);
         setLimit((limit) => limit + 10);
       } catch (error) {
         console.log('error', error.message);
@@ -40,6 +44,7 @@ function App() {
       setIsLoading(false);
       setprevSearchValue(searchValue);
       setVideos(response.data.items);
+      setTotalResult(response.data.pageInfo.totalResults);
       setLimit((limit) => limit + 10);
     } catch (error) {
       console.log('error', error.message);
@@ -48,10 +53,17 @@ function App() {
   };
 
   return (
-    <>
+    <Context.Provider value={{ videos, totalResults }}>
       <Header onSearch={onSearch} />
-      {isLoading ? <Loader /> : <VideoList items={videos} />}
-    </>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <SecondHeader />
+          <VideoList items={videos} />
+        </>
+      )}
+    </Context.Provider>
   );
 }
 

@@ -8,7 +8,7 @@ export interface SearchProps{
 }
 
 export interface VideoItemProps{
-    id:{videoId:string},
+    id:{videoId?:string,kind:string,channelId?:string},
     snippet:{
         thumbnails:{
             medium:{
@@ -17,14 +17,24 @@ export interface VideoItemProps{
         },
         title:string,
         channelTitle:string,
+        description:string
         
     } 
 }
 
 export interface VideoListProps{
-    items:Array<VideoItemProps>
+    items?:Array<VideoItemProps>
 }
 
 export interface ItemProps{
     item:VideoItemProps
+}
+
+export interface totalResult{
+    totalResults:number
+}
+
+export interface AppContextProps{
+    videos:Array<VideoItemProps> | null,
+    totalResults:number | null
 }

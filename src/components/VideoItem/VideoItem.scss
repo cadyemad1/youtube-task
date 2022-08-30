@@ -1,17 +1,41 @@
 .thumbnail{
-    width: 10em;
+    // @media screen and (min-width:768px) {
+      
+    // }
+
+    @media screen and (max-width:768px) {
+        width: 10em;
+    }
+    
 }
 
 .video-item{
+    display: flex;
     margin-top: 20px;
-    display: grid;
-    gap: 7px;
-    grid-template-columns: auto auto;
-    align-items: flex-start;
-    width: 95%;
+    // display: grid;
+    // gap: 7px;
+    // grid-template-columns: auto auto;
+    // align-items: flex-start;
+    // width: 95%;
+}
+.video-details{
+    width: 50%;
+    @media screen and (min-width:768px) {
+       margin-left: 30px;
+     }
+     @media screen and (max-width:768px) {
+        margin-left: 10px;
+      }
 }
 
 .title{
     margin:0px;
     font-size: 15px;
+}
+
+.description{
+    @media screen and (max-width:768px) {
+       display: none;
+    }
+    font-size: 16px;
 }
