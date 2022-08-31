@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import {useState ,ChangeEvent,KeyboardEvent} from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -9,32 +9,32 @@ import {SearchProps} from '../../Types'
 
 
 const Search = ({onSearch}:SearchProps) =>{
-    const [searchValue,setSearchValue] = useState('');
-    const [prevSearchValue,setprevSearchValue] = useState('');
+    const [inputValue,setInputValue] = useState('');
     const [isInputChanged, setIsInputChanged] = useState(false);
 
-    const handleSearchValue= (event:React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(event.target.value);
+    const handleSearchValue = (event:ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
       };
 
     const handleClick = () =>{
-        if(!searchValue) return;
+        if(!inputValue) return;
         setIsInputChanged(!isInputChanged);
-        onSearch(searchValue,prevSearchValue,setprevSearchValue);
+        onSearch(inputValue);
     }
-const handleKeyPress = (e:React.KeyboardEvent<HTMLInputElement>) =>{
+
+const handleKeyPress = (e:KeyboardEvent<HTMLInputElement>) =>{
    if(e.code !== "Enter") return;
    setIsInputChanged(!isInputChanged);
-   onSearch(searchValue,prevSearchValue,setprevSearchValue);
+   onSearch(inputValue);
 }
 
-const renderInput = () =><input type='search' value={searchValue} onChange={handleSearchValue} onKeyDown={(e)=>handleKeyPress(e)}/>
+const renderInput = () =><input type='search' value={inputValue} onChange={handleSearchValue} onKeyDown={(e)=>handleKeyPress(e)}/>
 
     return(
         <div className="search-bar">
             <div className="sm-show">
         {isInputChanged
-        ?<h4 className="search-text">{searchValue}</h4> 
+        ?<h4 className="search-text">{inputValue}</h4> 
         :renderInput()}
             </div>
             <div className="lg-show">

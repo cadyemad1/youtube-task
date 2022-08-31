@@ -1,10 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
 
 export interface SearchProps{
-    onSearch: (
-        searchValue:string,
-        prevSearchValue:string,
-        setprevSearchValue:Dispatch<SetStateAction<string>>) => void
+    onSearch: (inputValue:string) => void,
+  
 }
 
 export interface VideoItemProps{
@@ -37,4 +34,7 @@ export interface totalResult{
 export interface AppContextProps{
     videos:Array<VideoItemProps> | null,
     totalResults:number | null
+}
+export interface VideoRef{
+    lastVideoRef:(node:HTMLElement | null) => void
 }
